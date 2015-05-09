@@ -40,7 +40,6 @@ DataBaseManager.prototype = {
 		movie.save(function (err, movie) {
 		  if (err)  deferred.reject(err);
 		  deferred.resolve('Movie added to the database');
-		  console.log('saved', movie);
 		});
 		return deferred.promise;
 	},
@@ -54,9 +53,35 @@ DataBaseManager.prototype = {
 		return deferred.promise;
 	},
 
-	searchByQuery: function(query) {
+	searchActorsByQuery: function(query) {
+
 		var deferred = Q.defer();
 
+		var regExp = new RegExp(query+'+', "i");
+
+		var result = [];
+
+		this.Movie.find({
+			actors: { $elemMatch: {name: regExp}}}, function (err, movies) {
+			if (err) {
+				deferred.reject(err);
+			} else {
+				result = movies;
+				deferred.resolve(result);
+			}			
+		});
+		console.log(result)
+		if (result.length !== 0) {
+			deferred.resolve(result);
+		}
+
+		return deferred.promise;
+	
+	},
+
+	searchMoviesByQuery: function(query) {
+		var deferred = Q.defer();
+		console.log('aaaa')
 		this.Movie.find({
 			title: new RegExp(query+'+', "i")
 		}, function (err, movies) {
@@ -65,7 +90,7 @@ DataBaseManager.prototype = {
 		});
 
 		return deferred.promise;
-	
+
 	},
 
 	getMovieById: function(id) {
