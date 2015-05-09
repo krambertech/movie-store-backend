@@ -1,0 +1,17 @@
+{
+  "name": "MovieLibraryBackEnd",
+  "version": "0.0.1",
+  "description": "Test task WebbyLab",
+  "author": {
+    "name": "Kateryna Porshnieva",
+    "email": "k.porshnieva@gmail.com",
+    "url": "https://github.com/krambertech"
+  },
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "cors": "*",
+    "express": "*",
+    "mongoose": "*",
+    "q": "*"
+  }
+}
