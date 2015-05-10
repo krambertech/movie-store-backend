@@ -82,8 +82,6 @@ app.get('/getmoviedetails', function(req, res) {
 	
 });
 
-
-
 var server = app.listen(9125, function() { 
 	var port = server.address().port;
 	console.info('Server is up and running on port ', port);
