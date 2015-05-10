@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get('/movies', function(req, res) {
-	console.log('got /movies');
+	console.log('/movies');
 
 	db.getAllMovies().then(function(data){
 		res.send(data);
@@ -31,7 +31,6 @@ app.get('/movies/:search', function(req, res) {
 			res.send(data);
 		});
 	} else {
-		console.log('trye',db.searcMovieshByQuery)
 		db.searchMoviesByQuery(query).then(function(data){
 			res.send(data);
 		});	
@@ -50,7 +49,6 @@ app.get('/actors/:search', function(req, res) {
 		});
 	} else {
 		db.searchActorsByQuery(query).then(function(data){
-			console.log('data', query.length);
 			res.send(data);
 		});	
 	}
@@ -58,7 +56,7 @@ app.get('/actors/:search', function(req, res) {
 });
 
 app.post('/addmovie', function(req, res) {
-	console.log('/addMovie');
+	console.log('/addmovie');
 	db.addMovie(req.body).then(function(data){
 		res.send(true);
 	});

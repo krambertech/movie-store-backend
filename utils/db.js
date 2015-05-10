@@ -91,7 +91,6 @@ DataBaseManager.prototype = {
 
 	searchMoviesByQuery: function(query) {
 		var deferred = Q.defer();
-		console.log('aaaa')
 		this.Movie.find({
 			title: new RegExp(query+'+', "i")
 		}, function (err, movies) {
